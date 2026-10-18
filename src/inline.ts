@@ -521,8 +521,16 @@ const matchers = {
     } else {
       const subject = self.subject;
       const openers = self.openers["["];
-      const opener = openers[openers.length - 1];
-      if (openers && openers.length > 0 && opener.annot === "explicit_link") {
+      let opener = null;
+      if (openers) {
+        for (let i = openers.length - 1; i >= 0; i--) {
+          if (openers[i].annot === "explicit_link") {
+            opener = openers[i];
+            break;
+          }
+        }
+      }
+      if (opener) {
         // we have inline link
         // convert all matches inside destination to str
         self.strMatches((opener.subendpos || opener.endpos) + 1, pos - 1);

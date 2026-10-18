@@ -262,6 +262,38 @@ _hello [link](a_b) world_
 <p><em>hello <a href="a_b">link</a> world</em></p>
 ```
 
+Brackets in link destinations are URL text:
+```
+[x](http://u/[)
+.
+<p><a href="http://u/[">x</a></p>
+```
+
+```
+[x](http://u/[a])
+.
+<p><a href="http://u/[a]">x</a></p>
+```
+
+```
+![x](http://u/[a])
+.
+<p><img alt="x" src="http://u/[a]"></p>
+```
+
+An unclosed destination still lets later links form:
+```
+[a](b and [c](d)
+.
+<p>[a](b and <a href="d">c</a></p>
+```
+
+```
+[a](b [c](d))
+.
+<p>[a](b <a href="d">c</a>)</p>
+```
+
 ```
 [x](a{"b)
 .
