@@ -262,7 +262,7 @@ _hello [link](a_b) world_
 <p><em>hello <a href="a_b">link</a> world</em></p>
 ```
 
-Brackets in link destinations are URL text:
+Brackets that do not start another construct are URL text in a destination:
 ```
 [x](http://u/[)
 .
@@ -279,6 +279,12 @@ Brackets in link destinations are URL text:
 ![x](http://u/[a])
 .
 <p><img alt="x" src="http://u/[a]"></p>
+```
+
+```
+[x](u/[^a])
+.
+<p><a href="u/[^a]">x</a></p>
 ```
 
 An unclosed destination still lets later links form:
