@@ -294,6 +294,13 @@ An unclosed destination still lets later links form:
 <p>[a](b <a href="d">c</a>)</p>
 ```
 
+An opener before the destination cannot close inside it, even after `[`:
+```
+_a [x](u/[_b)
+.
+<p>_a <a href="u/[_b">x</a></p>
+```
+
 ```
 [x](a{"b)
 .
